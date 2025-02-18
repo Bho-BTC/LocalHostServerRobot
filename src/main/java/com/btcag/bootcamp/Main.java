@@ -1,6 +1,10 @@
 package com.btcag.bootcamp;
 
+import com.btcag.bootcamp.DatabaseEntities.PostService;
+import com.btcag.bootcamp.DatabaseEntities.Robot;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -44,8 +48,6 @@ public class Main {
 
     private static void postRobot(ObjectMapper objectMapper, Robot robot2Post) throws IOException {
         String json = objectMapper.writeValueAsString(robot2Post);
-
-
         // Send the POST request with the Robot object as JSON
         URL url = new URL("http://localhost:8080/queue");  // Change to your server's URL
         HttpURLConnection connection = (HttpURLConnection) url.openConnection();
@@ -62,5 +64,9 @@ public class Main {
         // Get the response from the server
         int statusCode = connection.getResponseCode();
         System.out.println("Response Code: " + statusCode);
+
+        PostService.postRobot(robot2Post);
+
+
     }
 }

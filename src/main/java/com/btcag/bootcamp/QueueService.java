@@ -1,10 +1,10 @@
 
 package com.btcag.bootcamp;
+import com.btcag.bootcamp.DatabaseEntities.Robot;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 import java.math.BigDecimal;
-import java.util.Scanner;
 
 @RestController
 @RequestMapping("/queue")

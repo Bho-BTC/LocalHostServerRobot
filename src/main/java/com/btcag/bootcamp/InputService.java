@@ -1,5 +1,7 @@
 package com.btcag.bootcamp;
 
+import com.btcag.bootcamp.DatabaseEntities.Robot;
+
 import java.math.BigDecimal;
 import java.util.Scanner;
 
