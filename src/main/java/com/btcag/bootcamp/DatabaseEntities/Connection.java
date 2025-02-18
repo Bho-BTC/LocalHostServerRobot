@@ -5,16 +5,28 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
+import java.io.InputStream;
+
 public class Connection {
     private static SessionFactory sessionFactory;
 
     static {
+        try (InputStream is = Connection.class.getClassLoader().getResourceAsStream("hibernate.cfg.xml")) {
+            if (is == null) {
+                System.out.println("hibernate.cfg.xml not found in the classpath!");
+            } else {
+                System.out.println("hibernate.cfg.xml loaded successfully!");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+// Proceed with Hibernate configuration
         try {
             sessionFactory = new Configuration()
-                    .configure()  // Ensure this file exists and is correct
-                    .addAnnotatedClass(Robot.class)  // Make sure Robot class is annotated with @Entity
+                    .configure()
+                    .addAnnotatedClass(Robot.class)
                     .buildSessionFactory();
-            System.out.println("Verbunden!");
 
         } catch (HibernateException ex) {
             System.out.println("Fehler: " + ex.getMessage());

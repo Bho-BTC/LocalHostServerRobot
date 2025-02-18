@@ -1,8 +1,13 @@
 package com.btcag.bootcamp.DatabaseEntities;
 
 import javax.persistence.Entity;
+import jakarta.persistence.Table;
+import jakarta.persistence.Column;
+import jakarta.persistence.Id;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 
-import javax.persistence.*;
+
 
 import java.math.BigDecimal;
 
@@ -15,7 +20,7 @@ public class Robot {
     @Column(name = "id")
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private String id;
+    private int id;
 
     @Column(name = "name")
     private String name = null;
@@ -65,7 +70,7 @@ public class Robot {
         return movementRate;
     }
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 }
