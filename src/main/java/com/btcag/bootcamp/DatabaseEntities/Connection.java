@@ -8,38 +8,23 @@ import org.hibernate.cfg.Configuration;
 import java.io.InputStream;
 
 public class Connection {
-    private static SessionFactory sessionFactory;
 
-    static {
-        try (InputStream is = Connection.class.getClassLoader().getResourceAsStream("hibernate.cfg.xml")) {
-            if (is == null) {
-                System.out.println("hibernate.cfg.xml not found in the classpath!");
-            } else {
-                System.out.println("hibernate.cfg.xml loaded successfully!");
+        private static final SessionFactory sessionFactory;
+
+        static {
+            try {            // Hibernate.cfg.xml laden und SessionFactory erstellen
+                sessionFactory = new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
+            } catch (Throwable ex) {            // Fehlerbehandlung
+                throw new ExceptionInInitializerError(ex);
             }
-        } catch (Exception e) {
-            e.printStackTrace();
         }
 
-// Proceed with Hibernate configuration
-        try {
-            sessionFactory = new Configuration().configure().buildSessionFactory();
 
-        } catch (HibernateException ex) {
-            System.out.println("Fehler: " + ex.getMessage());
-        }
-    }
-
-
-    public static SessionFactory openSession() {
+    public static SessionFactory getSessionFactory() {
         return sessionFactory;
     }
 
-    public static void closeSession(Session session) {
-        session.close();
-    }
-
     public static void shutdown() {
-        sessionFactory.close();
-    }
+        getSessionFactory().close();
+        }
 }

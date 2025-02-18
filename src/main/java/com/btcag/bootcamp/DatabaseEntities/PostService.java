@@ -15,15 +15,14 @@ public class PostService {
 
     public static void postRobot(Robot robot)  {
 
-       SessionFactory sessionFactory = Connection.openSession();
+       SessionFactory sessionFactory = Connection.getSessionFactory();
         Session session = sessionFactory.openSession();
         session.beginTransaction();
 
         session.save(robot);
         session.getTransaction().commit();
-
-        Connection.closeSession(session);
-
+        session.close();
+        Connection.shutdown();
 
     }
 
