@@ -23,10 +23,7 @@ public class Connection {
 
 // Proceed with Hibernate configuration
         try {
-            sessionFactory = new Configuration()
-                    .configure()
-                    .addAnnotatedClass(Robot.class)
-                    .buildSessionFactory();
+            sessionFactory = new Configuration().configure().buildSessionFactory();
 
         } catch (HibernateException ex) {
             System.out.println("Fehler: " + ex.getMessage());
@@ -34,8 +31,8 @@ public class Connection {
     }
 
 
-    public static Session openSession() {
-        return sessionFactory.openSession();
+    public static SessionFactory openSession() {
+        return sessionFactory;
     }
 
     public static void closeSession(Session session) {
