@@ -1,13 +1,13 @@
 package com.btcag.bootcamp;
 
-import com.btcag.bootcamp.DatabaseEntities.Robot;
+import com.btcag.bootcamp.DatabaseEntities.Robots;
 
 import java.math.BigDecimal;
 import java.util.Scanner;
 
 public class InputService {
 
-    public static Robot getStatsForRobot(Scanner scanner) {
+    public static Robots getStatsForRobot(Scanner scanner) {
         String name;
         int health = 1, attackDamage = 1, attackRange = 1, movementRate = 1;
         int in;
@@ -50,7 +50,7 @@ public class InputService {
         System.out.println("Movement: " + movementRate);
         System.out.println();
 
-        return new Robot(name, new BigDecimal(health), new BigDecimal(attackDamage), new BigDecimal(attackRange), new BigDecimal(movementRate));
+        return new Robots(name, new BigDecimal(health), new BigDecimal(attackDamage), new BigDecimal(attackRange), new BigDecimal(movementRate));
 
     }
 

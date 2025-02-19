@@ -24,6 +24,10 @@ public class Connection {
         return sessionFactory;
     }
 
+    public static Session getSession() {
+        return sessionFactory.openSession();
+    }
+
     public static void shutdown() {
         getSessionFactory().close();
         }
