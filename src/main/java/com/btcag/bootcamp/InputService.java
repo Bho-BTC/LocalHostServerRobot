@@ -59,9 +59,7 @@ public class InputService {
         do {
             System.out.println("Was willst du tun?");
             System.out.println("(1) Einen Roboter erstellen");
-            System.out.println("(2) Eine Map laden");
-            System.out.println("(3) Ein Spiel erstellen");
-            System.out.println("(4) Einem Spiel beitreten");
+            System.out.println("(2) Einen Roboter Löschen");
             System.out.println("(5) Exit");
             input = scanner.nextInt();
         } while (input != 1 && input != 2 && input != 3 && input != 4 && input != 5);

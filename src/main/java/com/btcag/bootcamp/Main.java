@@ -1,8 +1,10 @@
 package com.btcag.bootcamp;
 
+import com.btcag.bootcamp.DatabaseEntities.Connection;
 import com.btcag.bootcamp.DatabaseEntities.PostService;
 import com.btcag.bootcamp.DatabaseEntities.Robots;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.hibernate.Session;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -33,6 +35,9 @@ public class Main {
                     postRobot(objectMapper, robots2Post);
                     break;
 
+                case 2:
+                    String id = scanner.nextLine();
+                    deleteRobot(id);
 
 
 
@@ -62,7 +67,15 @@ public class Main {
         int statusCode = connection.getResponseCode();
         System.out.println("Response Code: " + statusCode);
 
+    }
 
+
+    private static void deleteRobot(String id) throws IOException {
+        Session session = Connection.getSession();
+        Robots robot = session.createQuery( "select r from Robots r where r.id = '"+id+"'", Robots.class).setParameter("id",id).getSingleResult();
+
+        System.out.println(robot);
+        session.createQuery( "delete from Robots r where r.id = :id", Robots.class).setParameter("id", id);
 
     }
 }

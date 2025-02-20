@@ -31,23 +31,20 @@ public class DatabaseService {
 
 
     @DeleteMapping("/robots/remove/id/{id}")
-    public Robots removeById(@PathVariable(value = "id") String uid){
+    public void removeById(@PathVariable(value = "id") String uid){
         Session session = Connection.getSession();
-        Robots robots2Remove = session.createQuery( "from Robots where id = "+uid, Robots.class).getSingleResult();
-        session.createQuery( "delete from Robots where id = "+uid, Robots.class).executeUpdate();
-        return robots2Remove;
-
-
-
+        System.out.println(session.createQuery( "delete from Robots r where r.id = :id", Robots.class).setParameter("id", uid).executeUpdate());
     }
 
     @GetMapping("robots/get/id/{id}")
-    public Robots seeSpecificItem(@PathVariable(value = "id") int uid){
+    public Robots seeSpecificItem(@PathVariable(value = "id") String id){
         Session session = Connection.getSession();
-        return session.createQuery( "from Robots where id = "+uid, Robots.class).getSingleResult();
+        return session.createQuery( "select r from Robots r where r.id = :id", Robots.class).setParameter("id",id).getSingleResult();
 
 
     }
+
+    
 
     @GetMapping
     public String sayHello(){
@@ -58,7 +55,7 @@ public class DatabaseService {
     public void addToList(@RequestBody Robots r){
         PostService.postRobot(r);
         Session session = Connection.getSession();
-        Long count = session.createQuery("SELECT COUNT(r) FROM Robots r", Long.class).getSingleResult();
+        Long count = session.createQuery("Select COUNT(r) FROM Robots r", Long.class).getSingleResult();
         System.out.println("Elements: "+ count);
         session.close();
     }
