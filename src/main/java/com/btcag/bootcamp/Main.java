@@ -72,10 +72,13 @@ public class Main {
 
     private static void deleteRobot(String id) throws IOException {
         Session session = Connection.getSession();
-        Robots robot = session.createQuery( "select r from Robots r where r.id = '"+id+"'", Robots.class).setParameter("id",id).getSingleResult();
+        session.beginTransaction();
+        Robots robot = session.createQuery( "select r from Robots r where r.id = '"+id+"'", Robots.class).getSingleResult();
 
         System.out.println(robot);
-        session.createQuery( "delete from Robots r where r.id = :id", Robots.class).setParameter("id", id);
+        session.createQuery("delete from Robots r where r.id = :id").setParameter("id", id).executeUpdate();
+
+        session.getTransaction().commit();
 
     }
 }
