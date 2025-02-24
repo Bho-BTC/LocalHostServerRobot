@@ -54,6 +54,8 @@ public class DatabaseService {
     @PostMapping(value = "robots/add",consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public void addToList(@RequestBody Robots r){
         PostService.postRobot(r);
+
+
         Session session = Connection.getSession();
         Long count = session.createQuery("Select COUNT(r) FROM Robots r", Long.class).getSingleResult();
         System.out.println("Elements: "+ count);
