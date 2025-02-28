@@ -51,7 +51,7 @@ public class InputService {
         System.out.println();
 
         return new Robots(name, new BigDecimal(health), new BigDecimal(attackDamage), new BigDecimal(attackRange), new BigDecimal(movementRate));
-
+//eee
     }
 
     public static int getActionInput(Scanner scanner) {
