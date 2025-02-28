@@ -56,6 +56,7 @@ public class InputService {
 
     public static int getActionInput(Scanner scanner) {
         int input;
+        
         do {
             System.out.println("Was willst du tun?");
             System.out.println("(1) Einen Roboter erstellen");
