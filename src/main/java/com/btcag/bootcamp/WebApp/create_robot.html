@@ -7,24 +7,27 @@
 </head>
 <body>
 <h1>Create New Robot</h1>
-<form action="/create" method="POST">
+<form id="robotForm">
     <label for="name">Name:</label><br>
-    <input type="text" name="name" required><br>
+    <input type="text" id="name" name="name" required><br>
 
     <label for="health">Health:</label><br>
-    <input type="number" step="0.01" name="health" required><br>
+    <input type="number" id="health" name="health" required><br>
 
     <label for="attackDamage">Attack Damage:</label><br>
-    <input type="number" step="0.01" name="attackDamage" required><br>
+    <input type="number" id="attackDamage" name="attackDamage" required><br>
 
     <label for="attackRange">Attack Range:</label><br>
-    <input type="number" step="0.01" name="attackRange" required><br>
+    <input type="number" id="attackRange" name="attackRange" required><br>
 
     <label for="movementRate">Movement Rate:</label><br>
-    <input type="number" step="0.01" name="movementRate" required><br>
+    <input type="number" id="movementRate" name="movementRate" required><br>
 
-    <button type="submit">Create Robot</button>
+    <!-- Submit button initially disabled -->
+    <button type="submit" id="submit">Create Robot</button>
 </form>
+<p id="output">ID of created Robot will be displayed here</p>
+<script type="module" src="main.ts"></script>
 <a href="/">Back to Menu</a>
 </body>
 </html>
