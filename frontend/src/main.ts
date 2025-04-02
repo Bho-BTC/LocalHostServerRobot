@@ -17,9 +17,13 @@ document.querySelector("form")?.addEventListener("submit", async (event) => {
             body: JSON.stringify(inputs),
         });
 
-        document.getElementById("output")!.textContent = response.ok ? "✅ Bot created!" : "❌ Error creating bot!";
-
+        if (response.ok) {
+            const data = await response.json();  // Parse the response as JSON
+            const robotId = data.id;  // Extract the ID from the JSON response
+            console.log("Robot ID:", robotId);  // Handle the ID as needed
+        } else {
+            console.error("Error in adding robot:", response.statusText);
+        }
 
     }
 );
-
