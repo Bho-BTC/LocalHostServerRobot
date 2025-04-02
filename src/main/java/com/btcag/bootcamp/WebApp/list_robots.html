@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="./index.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SeeRobots</title>
+</head>
+<body>
+<h1>Robot Data</h1>
+<pre id="robot-data"></pre> <!-- Placeholder for displaying robot data -->
+
+<script>
+    async function getRobots() {
+        try {
+            const response = await fetch('http://localhost:8080/database/robots/all'); // Correct the URL
+            const data = await response.json(); // Parse the response as JSON
+            document.getElementById('robot-data').innerText = JSON.stringify(data, null, 2); // Display it inside the <pre> tag
+        } catch (error) {
+            console.error('Error fetching robots:', error);
+        }
+    }
+
+    // Trigger the function when the page is loaded
+    document.addEventListener('DOMContentLoaded', getRobots);
+</script>
+</body>
+</html>
