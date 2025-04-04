@@ -1,0 +1,122 @@
+/* General Body Styling */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Nicer default font */
+    background-color: #f0f2f5; /* Light grey background */
+    color: #333; /* Darker text color for readability */
+    line-height: 1.6;
+    margin: 0;
+    padding: 20px; /* Add some padding around the content */
+    display: flex; /* Use flexbox for centering */
+    flex-direction: column; /* Stack elements vertically */
+    align-items: center; /* Center items horizontally */
+    min-height: 100vh; /* Ensure body takes full viewport height */
+}
+
+/* Heading Styling */
+h1 {
+    color: #1d3557; /* Dark blue heading */
+    margin-bottom: 30px; /* More space below the heading */
+    text-align: center;
+}
+
+/* Form Container Styling */
+#robotForm {
+    background-color: #ffffff; /* White background for the form */
+    padding: 30px; /* Generous padding inside the form */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    max-width: 500px; /* Limit form width for better readability */
+    width: 100%; /* Responsive width */
+    box-sizing: border-box; /* Include padding in width calculation */
+    margin-bottom: 20px; /* Space below the form */
+}
+
+/* Label Styling */
+label {
+    display: block; /* Make labels take their own line */
+    margin-bottom: 8px; /* Space below label */
+    font-weight: 600; /* Slightly bolder labels */
+    color: #457b9d; /* A different blue for labels */
+}
+
+/* Input Field Styling */
+.formText {
+    width: 100%; /* Make inputs fill container width */
+    padding: 12px; /* Comfortable padding inside inputs */
+    margin-bottom: 15px; /* Space below each input */
+    border: 1px solid #ced4da; /* Standard border */
+    border-radius: 4px; /* Slightly rounded corners for inputs */
+    box-sizing: border-box; /* Include padding/border in width */
+    font-size: 1rem; /* Standard font size */
+    transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out; /* Smooth transition on focus */
+}
+
+/* Input Field Focus Styling */
+.formText:focus {
+    border-color: #80bdff; /* Highlight border on focus */
+    outline: 0; /* Remove default browser outline */
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25); /* Add a subtle glow on focus */
+}
+
+/* Removing excessive line breaks (Optional but recommended) */
+/* If you remove the <br><br> tags from your HTML, */
+/* the margin-bottom on .formText will handle spacing. */
+/* Otherwise, the double breaks might create too much space. */
+#robotForm br {
+    display: none; /* Hide the <br> tags if you want CSS to control spacing */
+}
+
+
+/* Button Styling */
+.bodyButton {
+    background-color: #e63946; /* A contrasting red for the button */
+    color: white; /* White text */
+    border: none; /* Remove default border */
+    padding: 12px 20px; /* Comfortable padding */
+    font-size: 1rem; /* Match input font size */
+    font-weight: bold;
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor on hover */
+    width: 100%; /* Make button full width */
+    margin-top: 10px; /* Add some space above the button */
+    transition: background-color 0.3s ease, transform 0.1s ease; /* Smooth transitions */
+}
+
+/* Button Hover Effect */
+.bodyButton:hover {
+    background-color: #c12a37; /* Darker red on hover */
+}
+
+/* Button Active (Click) Effect */
+.bodyButton:active {
+    transform: scale(0.98); /* Slight shrink effect on click */
+}
+
+/* Output Paragraph Styling */
+#output {
+    margin-top: 20px; /* Space above the output */
+    padding: 10px;
+    background-color: #e9ecef; /* Light background for output area */
+    border: 1px dashed #adb5bd; /* Dashed border */
+    border-radius: 4px;
+    text-align: center;
+    color: #495057; /* Muted text color */
+    width: 100%;
+    max-width: 500px; /* Match form width */
+    box-sizing: border-box;
+    font-style: italic;
+}
+
+/* Link Styling */
+a {
+    display: inline-block; /* Allow margin/padding */
+    margin-top: 25px; /* Space above the link */
+    color: #007bff; /* Standard link blue */
+    text-decoration: none; /* Remove underline by default */
+    transition: color 0.2s ease;
+}
+
+a:hover {
+    color: #0056b3; /* Darker blue on hover */
+    text-decoration: underline; /* Add underline on hover */
+}

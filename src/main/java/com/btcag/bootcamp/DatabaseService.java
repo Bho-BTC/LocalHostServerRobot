@@ -8,6 +8,7 @@ import org.hibernate.Session;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
+import java.beans.MethodDescriptor;
 import java.math.BigDecimal;
 import java.util.List;
 
@@ -55,31 +56,22 @@ public class DatabaseService {
         return "Henlo Frens";
     }
 
-    @PostMapping(value = "robots/add", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-    public Response addToList(@RequestBody Robots r) {
-        PostService.postRobot(r);
+
+    @GetMapping(value = "robots/post", consumes = MediaType.APPLICATION_JSON_VALUE)
+    public String addRobot(@RequestBody Robots r) {
         Session session = Connection.getSession();
-        String name = r.getName();
-        BigDecimal health = r.getHealth();
-        BigDecimal dmg = r.getAttackDamage();
-        BigDecimal range = r.getAttackRange();
-        BigDecimal movement = r.getMovementRate();
+        addToList(r);
 
         Long count = session.createQuery("Select COUNT(r) FROM Robots r", Long.class).getSingleResult();
-
-        String id = session.createQuery("Select id FROM Robots where name = :name and attackRange = :attackRange and health = :health and attackDamage = :dmg and movementRate = :movement", String.class)
-                .setParameter("name", name)
-                .setParameter("attackRange", range)
-                .setParameter("health", health)
-                .setParameter("dmg", dmg)
-                .setParameter("movement", movement)
-                .getSingleResult();
-
-        System.out.println("Robot ID: " + id);
         System.out.println("Elements count: " + count);
         session.close();
+        return count.toString();
 
-        return new ResponseWrapper(id);  // Return the ID wrapped in a ResponseWrapper object
+    }
+
+    @PostMapping(value = "robots/add", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    public void addToList(@RequestBody Robots r) {
+        PostService.postRobot(r);
     }
 }
  

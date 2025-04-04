@@ -3,28 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../frontend/src/create_robot.css">
     <title>Create Robot</title>
 </head>
 <body>
 <h1>Create New Robot</h1>
 <form id="robotForm">
-    <label for="name">Name:</label><br>
-    <input type="text" id="name" name="name" required><br>
 
-    <label for="health">Health:</label><br>
-    <input type="number" id="health" name="health" required><br>
+    <label for="name">Name:</label>
+    <input type="text" class ="formText" id="name" name="name" required><br><br>
 
-    <label for="attackDamage">Attack Damage:</label><br>
-    <input type="number" id="attackDamage" name="attackDamage" required><br>
 
-    <label for="attackRange">Attack Range:</label><br>
-    <input type="number" id="attackRange" name="attackRange" required><br>
+    <label for="health">Health:</label>
+    <input type="text" class ="formText" id="health" name="health" required><br><br>
 
-    <label for="movementRate">Movement Rate:</label><br>
-    <input type="number" id="movementRate" name="movementRate" required><br>
 
-    <!-- Submit button initially disabled -->
-    <button type="submit" id="submit">Create Robot</button>
+    <label for="attackDamage">Attack damage:</label>
+    <input type="text" class ="formText" id="attackDamage" name="attackDamage" required><br><br>
+
+
+    <label for="attackRange">Attack range:</label>
+    <input type="text" class ="formText" id="attackRange" name="attackRange" required><br><br>
+
+
+    <label for="movementRate">Movement rate:</label>
+    <input type="text" class ="formText" id="movementRate" name="movementRate" required><br><br>
+
+    <label for="id">ID:</label>
+    <input type="text" class ="formText" id="id" name="id"><br><br>
+
+
+    <button class="bodyButton" type="submit">Submit</button>
 </form>
 <p id="output">ID of created Robot will be displayed here</p>
 <script type="module" src="main.ts"></script>
